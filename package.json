@@ -4,9 +4,16 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test": "jest",
+    "ios": "react-native run-ios",
+    "iphone7": "react-native run-ios --simulator=\"iPhone 7\"",
+    "android": "react-native run-android",
+    "build": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res && react-native run-android",
+    "iosDevice": "react-native run-ios --device --udid \"udid my hard device\"",
+    "emulator": "cd /Users/tsvetkovrb/Library/Android/sdk/tools && ./emulator -avd Pixel_API_27"
   },
   "dependencies": {
+    "native-base": "^2.10.0",
     "react": "16.6.3",
     "react-native": "0.57.8"
   },
