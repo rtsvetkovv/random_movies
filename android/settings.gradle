@@ -1,0 +1,3 @@
+rootProject.name = 'random_movies'
+
+include ':app'
