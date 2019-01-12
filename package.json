@@ -13,9 +13,14 @@
     "emulator": "cd /Users/tsvetkovrb/Library/Android/sdk/tools && ./emulator -avd Pixel_API_27"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "native-base": "^2.10.0",
     "react": "16.6.3",
-    "react-native": "0.57.8"
+    "react-native": "0.57.8",
+    "react-native-linear-gradient": "^2.5.3",
+    "react-redux": "^5.0.0",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "babel-jest": "23.6.0",
