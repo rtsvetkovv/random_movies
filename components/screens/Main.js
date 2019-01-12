@@ -1,18 +1,22 @@
 import React, { Component } from 'react';
-import { Text, View, Image, StyleSheet } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
-import { Container, Header, Body, Button, Icon } from 'native-base';
+import { Text, Image, StyleSheet } from 'react-native';
+import { Container, Body, Button } from 'native-base';
 import Search from '../../static/search.png';
+import { Actions } from 'react-native-router-flux';
 
 class Main extends Component {
   render() {
     return (
       <Container>
-        <Header />
         <Body
           style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
         >
-          <Button large rounded style={{ paddingHorizontal: 30 }}>
+          <Button
+            large
+            rounded
+            style={{ paddingHorizontal: 30 }}
+            onPress={() => Actions.movie()}
+          >
             <Image
               source={Search}
               style={{ width: 30, height: 30, marginRight: 20 }}
