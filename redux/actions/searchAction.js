@@ -7,16 +7,16 @@ import {
 } from '../actionTypes';
 import { Actions } from 'react-native-router-flux';
 
-export const searchStart = () => ({
+const searchStart = () => ({
   type: FETCH_MOVIE_REQUEST_START
 });
 
-export const searchSuccess = payload => ({
+const searchSuccess = payload => ({
   type: FETCH_MOVIE_REQUEST_SUCCESS,
   payload
 });
 
-export const searchError = () => ({
+const searchError = () => ({
   type: FETCH_MOVIE_REQUEST_ERROR
 });
 
@@ -32,8 +32,8 @@ export const fetchMovie = () => dispatch => {
       }
     )
     .then(response => {
-      Actions.movie();
       dispatch(searchSuccess(response.data));
+      Actions.movie();
     })
-    .catch(error => console.warn(error));
+    .catch(error => searchError(error));
 };

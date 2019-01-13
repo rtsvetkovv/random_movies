@@ -5,13 +5,12 @@ import {
 } from '../actionTypes';
 
 const initialState = {
-  movie: {},
+  movie: [],
   isLoading: false,
   error: false
 };
 
 export const search = (state = initialState, action) => {
-  console.warn(action.type);
   switch (action.type) {
     case FETCH_MOVIE_REQUEST_START:
       return {

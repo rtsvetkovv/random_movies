@@ -1,7 +1,7 @@
 import React from 'react';
 import { Router, Scene } from 'react-native-router-flux';
 import MainScreen from '../../containers/MainScreen';
-import Movie from './Movie';
+import MovieScreen from '../../containers/MovieScreen';
 
 const Screens = () => {
   return (
@@ -13,7 +13,7 @@ const Screens = () => {
           title="Главный экран"
           initial
         />
-        <Scene key="movie" component={Movie} title="Название фиьлма" />
+        <Scene key="movie" component={MovieScreen} title="Название фиьлма" />
       </Scene>
     </Router>
   );
