@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image } from 'react-native';
+import { Image, StyleSheet } from 'react-native';
 import {
   Container,
   Content,
@@ -12,45 +12,43 @@ import {
   Body
 } from 'native-base';
 
-import Test from '../../static/bg.jpg';
-import { movies } from '../mok';
+import Star from '../../static/star.png';
 
 export default class Movie extends Component {
   render() {
     const id = Math.floor(Math.random() * 17);
     const movie = this.props.movie.results[id];
     const poster = {
-      uri: `http://image.tmdb.org/t/p/w185/${movie.poster_path}`
+      uri: `http://image.tmdb.org/t/p/w342/${movie.poster_path}`
     };
     return (
       <Container>
         <Content>
-          <Card style={{ flex: 0 }}>
+          <Card style={{ flex: 1 }}>
             <CardItem>
               <Left>
                 <Body>
-                  <Text uppercase style={{ fontSize: 20 }}>
+                  <Text uppercase style={styles.title}>
                     {movie.title}
                   </Text>
-                  <Text note>{movie.release_date}</Text>
+                  <Text note>Дата выхода: {movie.release_date}</Text>
                 </Body>
               </Left>
             </CardItem>
             <CardItem cardBody>
-              <Body style={{ flexDirection: 'row' }}>
+              <Body>
                 <Image
                   source={poster}
-                  style={{ height: 300, width: 200, flex: 1, marginBottom: 10 }}
+                  style={styles.poster}
+                  resizeMode="contain"
                 />
-                <Text style={{ paddingHorizontal: 10, width: 200 }}>
-                  {movie.overview}
-                </Text>
+                <Text style={styles.overview}>{movie.overview}</Text>
               </Body>
             </CardItem>
             <CardItem>
               <Left>
                 <Button transparent textStyle={{ color: '#87838B' }}>
-                  <Icon name="thumbs-up" />
+                  <Image source={Star} style={styles.star} />
                   <Text>{movie.vote_average}</Text>
                 </Button>
               </Left>
@@ -61,3 +59,24 @@ export default class Movie extends Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  title: {
+    fontWeight: 'bold',
+    fontSize: 20
+  },
+  poster: {
+    width: '100%',
+    height: 600,
+    flex: 1,
+    marginBottom: 10
+  },
+  overview: {
+    paddingHorizontal: 10,
+    width: 400
+  },
+  star: {
+    width: 20,
+    height: 20
+  }
+});
