@@ -11,6 +11,7 @@ const initialState = {
 };
 
 export const search = (state = initialState, action) => {
+  console.warn(action.type);
   switch (action.type) {
     case FETCH_MOVIE_REQUEST_START:
       return {
