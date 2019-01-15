@@ -7,13 +7,13 @@ const Screens = () => {
   return (
     <Router>
       <Scene key="root">
+        <Scene key="main" component={MainScreen} hideNavBar initial />
         <Scene
-          key="main"
-          component={MainScreen}
-          title="Главный экран"
-          initial
+          key="movie"
+          component={MovieScreen}
+          title="Название фильма"
+          hideNavBar
         />
-        <Scene key="movie" component={MovieScreen} title="Название фиьлма" />
       </Scene>
     </Router>
   );

@@ -9,12 +9,19 @@ import {
   Button,
   Icon,
   Left,
-  Body
+  Body,
+  Header,
+  Right,
+  Title
 } from 'native-base';
 
 import Star from '../../static/star.png';
+import { Actions } from 'react-native-router-flux';
 
 export default class Movie extends Component {
+  handleBack = () => {
+    Actions.pop();
+  };
   render() {
     const id = Math.floor(Math.random() * 17);
     const movie = this.props.movie.results[id];
@@ -23,6 +30,11 @@ export default class Movie extends Component {
     };
     return (
       <Container>
+        <Header>
+          <Left style={{ flex: 1, marginLeft: 20 }}>
+            <Icon name="arrow-back" onPress={this.handleBack} />
+          </Left>
+        </Header>
         <Content>
           <Card style={{ flex: 1 }}>
             <CardItem>
@@ -72,8 +84,7 @@ const styles = StyleSheet.create({
     marginBottom: 10
   },
   overview: {
-    paddingHorizontal: 10,
-    width: 400
+    paddingHorizontal: 20
   },
   star: {
     width: 20,
