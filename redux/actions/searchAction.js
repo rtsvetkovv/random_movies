@@ -16,20 +16,16 @@ const searchSuccess = payload => ({
   payload
 });
 
-const searchError = () => ({
-  type: FETCH_MOVIE_REQUEST_ERROR
+const searchError = error => ({
+  type: FETCH_MOVIE_REQUEST_ERROR,
+  error
 });
 
-export const fetchMovie = () => dispatch => {
+export const fetchMovie = page => dispatch => {
   dispatch(searchStart());
   axios
     .get(
-      'https://api.themoviedb.org/3/discover/movie?api_key=4499d31c1d8a60d9dad7b581321a53b2&language=ru-RU&sort_by=popularity.desc&include_adult=false&include_video=false&page=1',
-      {
-        headers: {
-          'Content-Type': 'application/json;charset=utf-8'
-        }
-      }
+      `https://api.themoviedb.org/3/discover/movie?api_key=4499d31c1d8a60d9dad7b581321a53b2&language=ru-RU&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}`
     )
     .then(response => {
       dispatch(searchSuccess(response.data));

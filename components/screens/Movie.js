@@ -10,9 +10,7 @@ import {
   Icon,
   Left,
   Body,
-  Header,
-  Right,
-  Title
+  Header
 } from 'native-base';
 
 import Star from '../../static/star.png';
@@ -22,6 +20,7 @@ export default class Movie extends Component {
   handleBack = () => {
     Actions.pop();
   };
+
   render() {
     const id = Math.floor(Math.random() * 17);
     const movie = this.props.movie.results[id];
@@ -31,8 +30,10 @@ export default class Movie extends Component {
     return (
       <Container>
         <Header>
-          <Left style={{ flex: 1, marginLeft: 20 }}>
-            <Icon name="arrow-back" onPress={this.handleBack} />
+          <Left style={{ flex: 1 }}>
+            <Button onPress={this.handleBack} transparent>
+              <Icon name="arrow-back" onPress={this.handleBack} />
+            </Button>
           </Left>
         </Header>
         <Content>
@@ -76,6 +77,10 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: 'bold',
     fontSize: 20
+  },
+  back: {
+    width: 20,
+    height: 20
   },
   poster: {
     width: '100%',

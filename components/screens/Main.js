@@ -1,10 +1,25 @@
 import React, { Component } from 'react';
-import { Text, Image, StyleSheet, ImageBackground } from 'react-native';
+import {
+  Text,
+  Image,
+  StyleSheet,
+  ImageBackground,
+  Dimensions
+} from 'react-native';
+
 import { Container, Body, Button, Spinner } from 'native-base';
+
 import Search from '../../static/search.png';
 import Background from '../../static/main-bg.jpg';
 
+const { width, height } = Dimensions.get('window');
+
 class Main extends Component {
+  randomMovie = () => {
+    const page = Math.floor(Math.random() * 700);
+    this.props.handleFetchMovies(page);
+  };
+
   render() {
     let MainButton;
 
@@ -12,7 +27,7 @@ class Main extends Component {
       MainButton = <Spinner />;
     } else {
       MainButton = (
-        <Button large full onPress={() => this.props.handleFetchMovies()}>
+        <Button full onPress={this.randomMovie}>
           <Image source={Search} style={styles.buttonIcon} />
           <Text style={styles.buttonText}>Что посмотреть?</Text>
         </Button>
@@ -37,7 +52,10 @@ const styles = StyleSheet.create({
   spinner: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    width: width,
+    height: height,
+    backgroundColor: 'rgba(0, 0, 0, 0.8)'
   },
   button: {
     flex: 1,
@@ -46,9 +64,9 @@ const styles = StyleSheet.create({
     width: '80%'
   },
   buttonIcon: {
-    width: 30,
-    height: 30,
-    marginRight: 30
+    width: 20,
+    height: 20,
+    marginRight: 20
   },
   buttonText: {
     fontSize: 20,

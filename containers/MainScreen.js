@@ -7,7 +7,7 @@ const mapState = state => ({
 });
 
 const mapDispatch = dispatch => ({
-  handleFetchMovies: () => dispatch(fetchMovie())
+  handleFetchMovies: page => dispatch(fetchMovie(page))
 });
 
 export default connect(
