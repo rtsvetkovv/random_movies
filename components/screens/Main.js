@@ -26,12 +26,10 @@ class Main extends Component {
     if (this.props.isLoading) {
       MainButton = <Spinner />;
     } else {
-      MainButton = (
-        <Button full onPress={this.randomMovie}>
+      MainButton = <Button full large onPress={this.randomMovie} style={{ borderRadius: 2, backgroundColor: '#CC3300' }}>
           <Image source={Search} style={styles.buttonIcon} />
           <Text style={styles.buttonText}>Что посмотреть?</Text>
-        </Button>
-      );
+        </Button>;
     }
 
     return (

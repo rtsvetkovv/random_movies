@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image, StyleSheet } from 'react-native';
+import { Image, StyleSheet, Platform } from 'react-native';
 import {
   Container,
   Content,
@@ -10,6 +10,7 @@ import {
   Icon,
   Left,
   Body,
+  Right,
   Header
 } from 'native-base';
 
@@ -29,12 +30,19 @@ export default class Movie extends Component {
     };
     return (
       <Container>
-        <Header>
+        <Header androidStatusBarColor="#CC3300" style={{backgroundColor: "#CC3300"}}>
           <Left style={{ flex: 1 }}>
             <Button onPress={this.handleBack} transparent>
-              <Icon name="arrow-back" onPress={this.handleBack} />
+              <Icon name="arrow-back" onPress={this.handleBack} style={{color: 'white', marginLeft: Platform.OS === 'ios' ?  10 : 0}} />
             </Button>
           </Left>
+          <Body />
+          <Right>
+             <Button transparent textStyle={{ color: '#87838B' }}>
+                  <Image source={Star} style={styles.star} />
+                  <Text style={{color: 'white'}}>{movie.vote_average}</Text>
+                </Button>
+          </Right>
         </Header>
         <Content>
           <Card style={{ flex: 1 }}>
@@ -57,14 +65,6 @@ export default class Movie extends Component {
                 />
                 <Text style={styles.overview}>{movie.overview}</Text>
               </Body>
-            </CardItem>
-            <CardItem>
-              <Left>
-                <Button transparent textStyle={{ color: '#87838B' }}>
-                  <Image source={Star} style={styles.star} />
-                  <Text>{movie.vote_average}</Text>
-                </Button>
-              </Left>
             </CardItem>
           </Card>
         </Content>
