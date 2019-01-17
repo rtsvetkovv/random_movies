@@ -6,9 +6,9 @@ const mapState = state => ({
   isLoading: state.search.isLoading
 });
 
-const mapDispatch = dispatch => ({
-  handleFetchMovies: page => dispatch(fetchMovie(page))
-});
+const mapDispatch = {
+   fetchMovie
+};
 
 export default connect(
   mapState,

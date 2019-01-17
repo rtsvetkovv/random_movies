@@ -17,7 +17,7 @@ const { width, height } = Dimensions.get('window');
 class Main extends Component {
   randomMovie = () => {
     const page = Math.floor(Math.random() * 700);
-    this.props.handleFetchMovies(page);
+    this.props.fetchMovie(page);
   };
 
   render() {
@@ -26,10 +26,12 @@ class Main extends Component {
     if (this.props.isLoading) {
       MainButton = <Spinner />;
     } else {
-      MainButton = <Button full large onPress={this.randomMovie} style={{ borderRadius: 2, backgroundColor: '#CC3300' }}>
+      MainButton = (
+      <Button full large onPress={this.randomMovie} style={{ borderRadius: 2, backgroundColor: '#CC3300' }}>
           <Image source={Search} style={styles.buttonIcon} />
           <Text style={styles.buttonText}>Что посмотреть?</Text>
-        </Button>;
+      </Button>
+      );
     }
 
     return (
