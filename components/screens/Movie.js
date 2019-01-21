@@ -22,26 +22,35 @@ export default class Movie extends Component {
     Actions.pop();
   };
 
+  moreFilms = () => {
+    const page = Math.floor(Math.random() * 700);
+    this.props.moreMovie(page);
+  };
+
   render() {
-    const id = Math.floor(Math.random() * 17);
-    const movie = this.props.movie.results[id];
+    let id = Math.floor(Math.random() * 17);
+    let movie = this.props.movie.results[id];
     const poster = {
       uri: `http://image.tmdb.org/t/p/w342/${movie.poster_path}`
     };
     return (
       <Container>
-        <Header androidStatusBarColor="#CC3300" style={{backgroundColor: "#CC3300"}}>
+        <Header androidStatusBarColor="#CC3300" style={{ backgroundColor: '#CC3300' }}>
           <Left style={{ flex: 1 }}>
             <Button onPress={this.handleBack} transparent>
-              <Icon name="arrow-back" onPress={this.handleBack} style={{color: 'white', marginLeft: Platform.OS === 'ios' ?  10 : 0}} />
+              <Icon
+                name="arrow-back"
+                onPress={this.handleBack}
+                style={{ color: 'white', marginLeft: Platform.OS === 'ios' ? 10 : 0 }}
+              />
             </Button>
           </Left>
           <Body />
           <Right>
-             <Button transparent textStyle={{ color: '#87838B' }}>
-                  <Image source={Star} style={styles.star} />
-                  <Text style={{color: 'white'}}>{movie.vote_average}</Text>
-                </Button>
+            <Button transparent textStyle={{ color: '#87838B' }}>
+              <Image source={Star} style={styles.star} />
+              <Text style={{ color: 'white' }}>{movie.vote_average}</Text>
+            </Button>
           </Right>
         </Header>
         <Content>
@@ -56,17 +65,16 @@ export default class Movie extends Component {
                 </Body>
               </Left>
             </CardItem>
-            <CardItem cardBody>
+            <CardItem cardBody style={{ marginBottom: 30 }}>
               <Body>
-                <Image
-                  source={poster}
-                  style={styles.poster}
-                  resizeMode="contain"
-                />
+                <Image source={poster} style={styles.poster} resizeMode="contain" />
                 <Text style={styles.overview}>{movie.overview}</Text>
               </Body>
             </CardItem>
           </Card>
+          <Button full style={styles.buttonMore} onPress={this.moreFilms}>
+            <Text>Ещё фильм</Text>
+          </Button>
         </Content>
       </Container>
     );
@@ -94,5 +102,8 @@ const styles = StyleSheet.create({
   star: {
     width: 20,
     height: 20
+  },
+  buttonMore: {
+    backgroundColor: '#CC3300'
   }
 });

@@ -1,8 +1,17 @@
 import { connect } from 'react-redux';
 import Movie from '../components/screens/Movie';
+import { fetchMovie, moreMovie } from '../redux/actions/searchAction';
 
 const mapState = state => ({
   movie: state.search.movie
 });
 
-export default connect(mapState)(Movie);
+const mapDispatch = {
+  fetchMovie,
+  moreMovie
+};
+
+export default connect(
+  mapState,
+  mapDispatch
+)(Movie);

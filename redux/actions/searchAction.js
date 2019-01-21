@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { BASE_URL } from "react-native-dotenv"
+import { BASE_URL } from 'react-native-dotenv';
 
 import {
   FETCH_MOVIE_REQUEST_START,
@@ -31,7 +31,21 @@ export const fetchMovie = page => dispatch => {
     )
     .then(response => {
       dispatch(searchSuccess(response.data));
+      Actions.refresh();
       Actions.movie();
+    })
+    .catch(error => searchError(error));
+};
+
+export const moreMovie = page => dispatch => {
+  dispatch(searchStart());
+  axios
+    .get(
+      `${BASE_URL}&language=ru-RU&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}`
+    )
+    .then(response => {
+      dispatch(searchSuccess(response.data));
+      Actions.refresh();
     })
     .catch(error => searchError(error));
 };
