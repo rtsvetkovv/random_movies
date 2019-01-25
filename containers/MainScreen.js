@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Main from '../components/screens/Main';
+import { Main } from '../components/screens/Main';
 import { fetchMovie } from '../redux/actions/searchAction';
 
 const mapState = state => ({
@@ -7,10 +7,10 @@ const mapState = state => ({
 });
 
 const mapDispatch = {
-   fetchMovie
+  fetchMovie
 };
 
-export default connect(
+export const MainScreen = connect(
   mapState,
   mapDispatch
 )(Main);

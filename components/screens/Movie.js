@@ -17,7 +17,7 @@ import {
 import Star from '../../static/star.png';
 import { Actions } from 'react-native-router-flux';
 
-export default class Movie extends Component {
+export class Movie extends Component {
   handleBack = () => {
     Actions.pop();
   };

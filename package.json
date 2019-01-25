@@ -5,6 +5,7 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
+    "init": "concurrently \"yarn run emulator\" \"yarn run android\"",
     "ios": "react-native run-ios",
     "iphone7": "react-native run-ios --simulator=\"iPhone 7\"",
     "android": "react-native run-android",
@@ -26,6 +27,7 @@
   },
   "devDependencies": {
     "babel-jest": "23.6.0",
+    "concurrently": "^4.1.0",
     "jest": "23.6.0",
     "metro-react-native-babel-preset": "0.51.1",
     "react-test-renderer": "16.6.3"

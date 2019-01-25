@@ -1,24 +1,23 @@
 import React, { Component } from 'react';
-import {
-  Text,
-  Image,
-  StyleSheet,
-  ImageBackground,
-  Dimensions
-} from 'react-native';
+import { Text, Image, StyleSheet, ImageBackground, Dimensions } from 'react-native';
 
-import { Container, Body, Button, Spinner } from 'native-base';
+import { Container, Body, Button, Spinner, Icon } from 'native-base';
 
 import Search from '../../static/search.png';
 import Background from '../../static/main-bg.jpg';
+import { Actions } from 'react-native-router-flux';
 
 const { width, height } = Dimensions.get('window');
 
-class Main extends Component {
+export class Main extends Component {
   randomMovie = () => {
     const page = Math.floor(Math.random() * 700);
     this.props.fetchMovie(page);
   };
+
+  // openeDrawerMenu = () => {
+  //   Actions.drawer();
+  // };
 
   render() {
     let MainButton;
@@ -27,26 +26,30 @@ class Main extends Component {
       MainButton = <Spinner />;
     } else {
       MainButton = (
-      <Button full large onPress={this.randomMovie} style={{ borderRadius: 2, backgroundColor: '#CC3300' }}>
+        <Button
+          full
+          large
+          onPress={this.randomMovie}
+          style={{ borderRadius: 2, backgroundColor: '#CC3300' }}
+        >
           <Image source={Search} style={styles.buttonIcon} />
           <Text style={styles.buttonText}>Что посмотреть?</Text>
-      </Button>
+        </Button>
       );
     }
 
     return (
       <Container>
         <ImageBackground source={Background} style={styles.background}>
-          <Body style={this.props.isLoading ? styles.spinner : styles.button}>
-            {MainButton}
-          </Body>
+          {/* <Button onPress={this.openeDrawerMenu} transparent>
+            <Icon name="arrow-back" style={{ color: 'white' }} />
+          </Button> */}
+          <Body style={this.props.isLoading ? styles.spinner : styles.button}>{MainButton}</Body>
         </ImageBackground>
       </Container>
     );
   }
 }
-
-export default Main;
 
 const styles = StyleSheet.create({
   spinner: {
