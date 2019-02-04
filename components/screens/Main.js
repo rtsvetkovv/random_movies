@@ -15,9 +15,9 @@ export class Main extends Component {
     this.props.fetchMovie(page);
   };
 
-  // openeDrawerMenu = () => {
-  //   Actions.drawer();
-  // };
+  openeDrawerMenu = () => {
+    Actions.drawerOpen();
+  };
 
   render() {
     let MainButton;
@@ -41,9 +41,9 @@ export class Main extends Component {
     return (
       <Container>
         <ImageBackground source={Background} style={styles.background}>
-          {/* <Button onPress={this.openeDrawerMenu} transparent>
+          <Button onPress={this.openeDrawerMenu} transparent>
             <Icon name="arrow-back" style={{ color: 'white' }} />
-          </Button> */}
+          </Button>
           <Body style={this.props.isLoading ? styles.spinner : styles.button}>{MainButton}</Body>
         </ImageBackground>
       </Container>
